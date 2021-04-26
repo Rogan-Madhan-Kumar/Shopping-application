@@ -1,0 +1,54 @@
+{% extends "./foundation.html" %}
+{% load static %}
+{% block title %}ClothingHut{% endblock %}
+{% block content %}
+
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Search, View, Buy, Review</h1>
+        <p class="lead text-muted">Select your favourite clothes today at the ClothingHut. Here we offer affordable clothing at a high quality and are also up to today's fashion trends.
+        We provide a vast variety of clothes that are accessible to all sizes. Pick your favourites and enjoy. </p>
+        <p>
+          <a href="/login" class="btn btn-primary my-2">Make an account</a>
+          
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="pb-3 h5">All Clothes</div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+        {% for product in products %}
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">Price: ₹{{product.price}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock %}
